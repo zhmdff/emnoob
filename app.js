@@ -252,7 +252,7 @@ app.post('/submit-form',authenticate, (req, res) => {
   const { name, company, email, phone, message } = req.body;
 
   if (!name || !company || !email || !phone || !message) {
-    return res.status(400).send('All fields are required');
+    return res.status(400).send('All fields are required 1');
   }
 
   const sql = 'INSERT INTO info (name, company, email, phone, message) VALUES (?, ?, ?, ?, ?)';
@@ -271,7 +271,7 @@ app.post('/student-form',authenticate, (req, res) => {
   console.log(birthdate)
 
   if (!name || !surname || !username || !password || !email || !phone_number || !address || !group_name || !birthdate) {
-      return res.status(400).send('All fields are required');
+      return res.status(400).send('All fields are required 2');
   }
 
   // Convert birthdate to YYYY-MM-DD format
@@ -309,7 +309,7 @@ app.post('/group-form', authenticate, (req, res) => {
   const { name, number } = req.body;
 
   if (!name || !number) {
-    return res.status(400).send('All fields are required');
+    return res.status(400).send('All fields are required 3');
   }
 
   const sql = 'INSERT INTO groups (group_name, group_number) VALUES (?, ?)';
