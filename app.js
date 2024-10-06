@@ -19,7 +19,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Create MySQL connection
 const db = mysql.createConnection({
-  host: 'emnoob-emnoob.i.aivencloud.com:27334',
+  host: 'emnoob-emnoob.i.aivencloud.com',
+  port: '27334',
   user: 'avnadmin',
   password: 'AVNS_bBud-j1_x7fVyb4jXpD',
   database: 'emnoob'
