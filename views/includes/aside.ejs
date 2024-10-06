@@ -86,7 +86,7 @@
             <span class="menu-header-text">Pages</span>
           </li>
 
-          <% if (globalUserType === 'admin') { %>
+          <% if (globalUserType === 'admin' || globalUserType === 'moderator' || globalUserType === 'student' || globalUserType === 'teacher') { %>
             <!-- Students -->
             <li class="menu-item <%= path.startsWith('/student') ? 'active open' : '' %>">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -99,11 +99,13 @@
                     <div data-i18n="Account">Student List</div>
                   </a>
                 </li>
+                <% if (globalUserType === 'admin' || globalUserType === 'moderator') { %>
                 <li class="menu-item <%= path === '/student/form' ? 'active' : '' %>">
                   <a href="/student/form" class="menu-link">
                     <div data-i18n="Notifications">Add Student</div>
                   </a>
                 </li>
+                <% } %>
               </ul>
             </li>
           
@@ -119,11 +121,13 @@
                     <div data-i18n="Account">Group List</div>
                   </a>
                 </li>
+                <% if (globalUserType === 'admin' || globalUserType === 'moderator') { %>
                 <li class="menu-item <%= path === '/group/form' ? 'active' : '' %>">
                   <a href="/group/form" class="menu-link">
                     <div data-i18n="Notifications">Add Group</div>
                   </a>
                 </li>
+                <% } %>
               </ul>
             </li>
           <% } %>

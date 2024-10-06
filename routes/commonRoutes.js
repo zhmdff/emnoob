@@ -3,6 +3,18 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const db = require('../db');
 
+
+router.get('/admin_login', (req, res) => {
+    const isLoginPage = true;
+    const username = req.session.username || '';
+
+    if (username) {
+        return res.redirect('/dashboard');
+    }
+
+    res.render('admin_login', { isLoginPage, username, req, path: req.path, globalUserType: 'default' });
+});
+
 router.get('/login', (req, res) => {
     const isLoginPage = true;
     const username = req.session.username || '';

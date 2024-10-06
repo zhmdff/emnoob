@@ -1,0 +1,70 @@
+<style>
+    body{
+      background-repeat: no-repeat!important;
+      background-size:cover!important;
+      background-image: url('/img/site/bbu.jpg')!important;
+    }
+    .vh-100 {
+        min-height: 100vh;
+    }
+    .card {
+        background-color: rgb(177, 255, 190) !important;
+        border-radius: 20px;
+    }
+    .card-body {
+        padding: 3.5rem 1.5rem !important;
+        border: 2px solid rgba(70, 70, 70, 0.3);
+        border-radius: 20px;
+    }
+    .btn-success {
+        border-radius: 20px;
+    }
+    .form-control {
+        border: 1px groove #D0FFC8;
+    }
+    .form-label {
+        font-size: 1.2rem;
+    }
+    @media (min-width: 576px) {
+        .card {
+            width: 30%;
+        }
+    }
+    body{
+        background-repeat: no-repeat!important;
+        background-size:cover!important;
+         background-image: url('/img/site/bbu_admin.jpg')!important;
+    }
+</style>
+
+<%- include('./includes/head') %>
+
+<!-- Content -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card">
+        <div class="card-body">
+            <form action="/admin-login" method="POST">
+                <div class="text-center mb-3">
+                    <img src="/img/site/logo.png" class="img-fluid w-25" alt="Image" />
+                    <p class="mt-3 mb-0 fw-bold" style="font-size: 3vh;color:#008d00">BAKI ADMIN UNIVERSITETI</p>
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="basic-default-username" class="form-label">İstifadəçi adı</label>
+                    <input type="text" name="username" class="form-control" id="basic-default-username" placeholder="İstifadəçi adını yazın" />
+                </div>
+                <div class="mb-3">
+                    <label for="basic-default-password" class="form-label">Şifrə</label>
+                    <input type="password" name="password" class="form-control" id="basic-default-password" placeholder="Şifrənizi yazın" />
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success form-control">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+
+
+<%- include('./includes/foot') %>

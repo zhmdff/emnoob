@@ -8,4 +8,5 @@ router.get('/student/table', authenticate, adminController.getStudentTable);
 router.get('/group/table', authenticate, adminController.getGroupTable);
 router.get('/group/info/:group_number', authenticate, adminController.getGroupInfo);
 
+
 module.exports = router;
