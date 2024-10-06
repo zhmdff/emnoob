@@ -282,7 +282,7 @@ app.post('/student-form',authenticate, (req, res) => {
           return res.status(500).send('Error hashing password');
       }
 
-      const sql = 'INSERT INTO students (name, surname, username, password, email, phone_number, address_line, group_name, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      const sql = 'INSERT INTO students (name, surname, username, password, email, phone_number, address, group_name, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
       db.query(sql, [name, surname, username, hashedPassword, email, phone_number, address, group_name, formattedBirthdate], (err, result) => {
           if (err) {
               return res.status(500).send('Error inserting form data into database');
