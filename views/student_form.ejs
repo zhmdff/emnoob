@@ -15,89 +15,72 @@
     <div class="col-xxl">
       <div class="card mb-4">
         <div class="card-body">
-          <form action="/student-form" method="POST">
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
-                <div class="col-sm-10">
+            <form action="/student-form" method="POST">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+                  <div class="col-sm-10">
                     <input type="text" name="name" class="form-control" id="basic-default-name" placeholder="Ad..." />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="surname">Surname</label>
-                <div class="col-sm-10">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="surname">Surname</label>
+                  <div class="col-sm-10">
                     <input type="text" name="surname" class="form-control" id="surname" placeholder="Soyad..." />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="username">Userame</label>
-                <div class="col-sm-10">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="username">Username</label>
+                  <div class="col-sm-10">
                     <input type="text" name="username" class="form-control" id="username" placeholder="Ad..." />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="password">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Ad..." />
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="password">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password..." />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="email">Email</label>
-                <div class="col-sm-10">
-                    <div class="input-group input-group-merge">
-                        <input type="text" name="email" id="email" class="form-control" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-default-email2" />
-                        <span class="input-group-text" id="email2">@example.com</span>
-                    </div>
-                    <div class="form-text"> You can use letters, numbers & periods </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="email">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="john.doe@example.com" aria-label="Email" />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="phone_number">Phone No</label>
-                <div class="col-sm-10">
-                    <input type="text" name="phone_number" id="phone_number" class="form-control phone-mask" placeholder="658 799 8941" aria-label="658 799 8941" aria-describedby="basic-default-phone" />
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="phone_number">Phone No</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="phone_number" id="phone_number" class="form-control phone-mask" placeholder="658 799 8941" aria-label="Phone number" />
+                  </div>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="address">Address</label>
-                <div class="col-sm-10">
-                    <input type="text" name="address" class="form-control" id="address" placeholder="Adress..." />
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="address">Address</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Address..." />
+                  </div>
                 </div>
-            </div>
-
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="group_name">Group Name</label>
-
-                <div class="col-sm-10">
-                    <input type="text"  class="form-control"  placeholder="Group Name..." />
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="group_name" >Example select</label>
-                <div class="col-sm-10">
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="group_name">Group Name</label>
+                  <div class="col-sm-10">
                     <select name="group_name" class="form-select" id="group_name" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                        <% info.forEach((row) => { %>
-                            <option value="<%= row.name %>"><%= row.group_name %></option>
-                        <% }); %>
+                      <option selected>Open this select menu</option>
+                      <% info.forEach((row) => { %>
+                        <option value="<%= row.name %>"><%= row.group_name %></option>
+                      <% }); %>
                     </select>
+                  </div>
                 </div>
-            </div>
-
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="birthdate">birthdate</label>
-                <div class="col-sm-10">
-                    <input type="date" name="birthdate" class="form-control" id="birthdate" placeholder="dd-mm-yyyy"/>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="birthdate">Birthdate</label>
+                  <div class="col-sm-10">
+                    <input type="date" name="birthdate" class="form-control" id="birthdate" placeholder="dd-mm-yyyy" />
+                  </div>
                 </div>
-            </div>
-
-
-            <div class="row justify-content-end">
-                <div class="col-sm-10">
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Send</button>
+                  </div>
                 </div>
-            </div>
-        </form>
-        
+              </form>              
         </div>
       </div>
     </div>
