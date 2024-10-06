@@ -1,0 +1,42 @@
+<%- include('./includes/head') %>
+<%- include('./includes/aside', { path: path }) %>
+<%- include('./includes/navbar', { username: username }) %>
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Group /</span> Group List</h4>
+
+    <!-- Bordered Table -->
+    <div class="card">
+        <h5 class="card-header">All Groups</h5>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>name</th>
+                            <th>number</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% info.forEach((row) => { %>
+                        <tr>
+                            <td><%= row.group_name %></td>
+                            <td><%= row.group_number %></td>
+                            <td><a href="/group/info/<%= row.group_name %>">See Students</a></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/ Bordered Table -->
+
+</div>
+<!-- / Content -->
+
+<%- include('./includes/footer') %>
+<%- include('./includes/foot') %>

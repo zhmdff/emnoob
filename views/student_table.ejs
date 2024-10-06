@@ -1,0 +1,56 @@
+<%- include('./includes/head') %>
+<%- include('./includes/aside', { path: path }) %>
+<%- include('./includes/navbar', { username: username }) %>
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Student /</span> List</h4>
+
+    <!-- Bordered Table -->
+    <div class="card">
+        <h5 class="card-header">All Students</h5>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address Line</th>
+                            <th>Course</th>
+                            <th>Birthdate</th>
+                            <th>Group Name</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% info.forEach((row) => { %>
+                        <tr>
+                            <td><%= row.name %></td>
+                            <td><%= row.surname %></td>
+                            <td><%= row.username %></td>
+                            <td><%= row.email %></td>
+                            <td><%= row.phone_number %></td>
+                            <td><%= row.address_line %></td>
+                            <td><%= row.course %></td>
+                            <td><%= row.birthdate %></td>
+                            <td><%= row.group_name %></td>
+                            <td><%= row.is_student %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/ Bordered Table -->
+
+</div>
+<!-- / Content -->
+
+<%- include('./includes/footer') %>
+<%- include('./includes/foot') %>

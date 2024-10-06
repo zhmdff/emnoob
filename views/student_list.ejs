@@ -1,0 +1,40 @@
+<%- include('./includes/head') %>
+<%- include('./includes/aside', { path: path }) %>
+<%- include('./includes/navbar', { username: username }) %>
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
+
+    <!-- Bordered Table -->
+    <div class="card">
+        <h5 class="card-header">Bordered Table</h5>
+        <div class="card-body">
+            <div class="table-responsive text-nowrap">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% info.forEach((row) => { %>
+                        <tr>
+                            <td><%= row.name %></td>
+                            <td><%= row.surname %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/ Bordered Table -->
+
+</div>
+<!-- / Content -->
+
+<%- include('./includes/footer') %>
+<%- include('./includes/foot') %>
