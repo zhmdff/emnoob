@@ -19,11 +19,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Create MySQL connection
 const db = mysql.createConnection({
-  host: 'emnoob-emnoob.i.aivencloud.com',
-  port: '27334',
-  user: 'avnadmin',
-  password: 'AVNS_bBud-j1_x7fVyb4jXpD',
-  database: 'emnoob'
+  host: 'sql12.freesqldatabase.com',
+  port: '3306',
+  user: 'sql12735789',
+  password: 'FBmqP3AXGB',
+  database: 'sql12735789'
 });
 
 // Connect to MySQL
