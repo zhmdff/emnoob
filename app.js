@@ -132,19 +132,58 @@ app.get('/logout',authenticate, (req, res) => {
 
 
 app.get('/student/table', authenticate, (req, res) => {
-  if (globalUserType === 'admin' || globalUserType === 'moderator' || globalUserType === 'student' || globalUserType === 'teacher'){
-  const sql = 'SELECT * FROM students';
-  db.query(sql, (err, rows) => {
-    if (err) {
-      return res.status(500).send('Error fetching data from database');
-    }
-    const username = req.session.username;
-    res.render('student_table', { info: rows, username, req, path: req.path, globalUserType });
-  });
-  }else{
+  if (['admin', 'moderator', 'student', 'teacher'].includes(globalUserType)) {
+    // Extract search, page, and limit from query parameters, with defaults
+    const { search = '', page = 1, limit = 3 } = req.query;
+
+    // Calculate the offset for pagination
+    const offset = (page - 1) * limit;
+
+    // Prepare the search query (searching by name or surname)
+    const searchQuery = `%${search}%`;
+
+    // SQL query to get the total number of records for pagination
+    const countSql = 'SELECT COUNT(*) AS count FROM students WHERE name LIKE ? OR surname LIKE ?';
+    
+    // SQL query to fetch the filtered and paginated data
+    const dataSql = 'SELECT * FROM students WHERE name LIKE ? OR surname LIKE ? LIMIT ? OFFSET ?';
+
+    // Get the total count of matching records
+    db.query(countSql, [searchQuery, searchQuery], (err, countResult) => {
+      if (err) {
+        return res.status(500).send('Error fetching data from database');
+      }
+
+      const totalRecords = countResult[0].count;
+      const totalPages = Math.ceil(totalRecords / limit);
+
+      // Fetch the actual data with pagination and search
+      db.query(dataSql, [searchQuery, searchQuery, parseInt(limit), parseInt(offset)], (err, rows) => {
+        if (err) {
+          return res.status(500).send('Error fetching data from database');
+        }
+
+        const username = req.session.username;
+
+        // Render the template with pagination, search results, and total pages
+        res.render('student_table', { 
+          info: rows, 
+          username, 
+          req, 
+          path: req.path, 
+          globalUserType, 
+          search, 
+          currentPage: parseInt(page), 
+          totalPages 
+        });
+      });
+    });
+  } else {
     res.status(403).send('Access forbidden');
   }
 });
+
+
 
 
 // app.get('/group/table',authenticate, (req, res) => {
