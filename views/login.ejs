@@ -10,11 +10,12 @@
     .card {
         background-color: rgba(255, 255, 255, 0.7) !important;
         border-radius: 20px;
+        width: 30%!important;
     }
     .card-body {
         padding: 3.5rem 1.5rem !important;
-        border: 2px solid rgba(70, 70, 70, 0.3);
         border-radius: 20px;
+        
     }
     .btn-success {
         border-radius: 20px;
@@ -34,6 +35,10 @@
 
 <%- include('./includes/head') %>
 
+
+
+
+
 <!-- Content -->
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card">
@@ -43,6 +48,12 @@
                     <img src="/img/site/logo.png" class="img-fluid w-25" alt="Image" />
                     <p class="mt-3 mb-0 fw-bold" style="font-size: 3vh;color:#555555">BAKI BIZNES UNIVERSITETI</p>
                 </div>
+                <br>
+                <% if (errorMessage) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= errorMessage %>
+                      </div>
+                <% } %>
                 <br>
                 <div class="mb-3">
                     <label for="basic-default-username" class="form-label">İstifadəçi adı</label>

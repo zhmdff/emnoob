@@ -66,16 +66,29 @@ app.get('/admin_login', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-  const isLoginPage = true; // Set a variable to indicate it's a login page
-  const username = req.session.username || ''; // Retrieve username from session or default to empty string
+  const isLoginPage = true;
+  const username = req.session.username || '';
   
-  // Check if the user is already logged in
   if (username) {
-    return res.redirect('/dashboard'); // Redirect to the dashboard or home page if already logged in
+    return res.redirect('/dashboard');
   }
-  
-  res.render('login', { isLoginPage, username, req, path: req.path, globalUserType });
+
+  const ipAddress = req.headers['x-forwarded-for'] || req.ip;
+  console.log(`Login page accessed by IP: ${ipAddress}`);
+
+  const errorMessage = req.session.errorMessage;
+  req.session.errorMessage = null;
+
+  res.render('login', { 
+    isLoginPage, 
+    username, 
+    req, 
+    path: req.path, 
+    globalUserType,
+    errorMessage 
+  });
 });
+
 
 app.get('/', (req, res) => {
   res.redirect('/dashboard');
@@ -295,8 +308,14 @@ app.post('/form-login', (req, res) => {
     }
     console.log(results);
 
+    // if (results.length === 0) {
+    //   return res.status(400).send('Username does not exist');
+    // }
+
     if (results.length === 0) {
-      return res.status(400).send('Username does not exist');
+      req.session.errorMessage = "No username found";
+      return res.redirect('/login');
+      // return res.status(400).send('Username does not exist');
     }
 
     // Compare password with hashed password
